@@ -1,0 +1,33 @@
+### this runs on the UChicago AF
+
+mkdir traineeship
+cd traineeship
+setupATLAS
+lsetup git
+git atlas init-workdir https://:@gitlab.cern.ch:8443/jahreda/athena.git
+cd athena
+git atlas addpkg AthenaPoolExample
+cd ..
+mkdir build
+cd build
+asetup Athena,main,latest
+cmake ../athena/Projects/WorkDir/
+make
+source x86_64-el9-gcc13-opt/setup.sh
+cd ..
+mkdir run
+cd run/
+
+### run
+python -m AthenaPoolExampleAlgorithms.AthenaPoolExample_ReadWrite.py >& log1
+python -m AthenaPoolExampleAlgorithms.AthenaPoolExample_ReadWriteNext.py > log2
+python -m AthenaPoolExampleAlgorithms.AthenaPoolExample_WritexAODElectrons.py >& log3
+python -m AthenaPoolExampleAlgorithms.AthenaPoolExample_ReadxAODElectrons.py >& log4
+
+### if you log in again you only need to do this before running again:
+cd traineeship
+setupATLAS
+cd build
+asetup Athena,main,latest
+source x86_64-el9-gcc13-opt/setup.sh
+cd ../run
