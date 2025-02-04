@@ -19,6 +19,7 @@ mkdir run
 cd run/
 
 ### run
+python -m AthenaPoolExampleAlgorithms.AthenaPoolExample_Write.py >& log0
 python -m AthenaPoolExampleAlgorithms.AthenaPoolExample_ReadWrite.py >& log1
 python -m AthenaPoolExampleAlgorithms.AthenaPoolExample_ReadWriteNext.py > log2
 python -m AthenaPoolExampleAlgorithms.AthenaPoolExample_WritexAODElectrons.py >& log3
@@ -31,3 +32,9 @@ cd build
 asetup Athena,main,latest
 source x86_64-el9-gcc13-opt/setup.sh
 cd ../run
+
+### View inside SimplePoolFile_xAOD.root
+checkxAOD SimplePoolFile_xAOD.root
+
+### To view all of the branches stored file
+checkFile SimplePoolFile_xAOD.root
