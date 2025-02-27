@@ -1,4 +1,4 @@
-name: c2-the-p2
+name: c2-the-p2-arrays
 channels:
   - conda-forge
 dependencies:
