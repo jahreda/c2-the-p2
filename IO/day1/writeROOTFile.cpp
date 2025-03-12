@@ -96,7 +96,7 @@ int main()
    const char* form;
    // Timed write()
    for (auto flush : flushes) {
-      std::cerr << "JAA doing flush = " << flush << " and N = " << N << " and vec size = " << vecsize << std::endl;
+      std::cerr << "Flush = " << flush << " and N = " << N << " and vec size = " << vecsize << std::endl;
       gBenchmark = new TBenchmark();
       form =  Form("wr_hvec_N%d_F%d_Sz%d",N,flush,vecsize);
       gBenchmark->Start(form);
